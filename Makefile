@@ -1,4 +1,4 @@
-project_md.html: project_md.Rmd code/03_render_report.R 
+project_md.html: project_md.Rmd code/03_render_report.R output/table.rds output/figure.rds
 	Rscript code/03_render_report.R
 
 output/table.rds: code/01_make_table.R

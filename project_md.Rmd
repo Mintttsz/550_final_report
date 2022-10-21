@@ -43,7 +43,14 @@ $~$
 
 ### Loading data
 ```{r data, include=T ,warning=FALSE}
-dat <- read.csv(paste0(getwd(),"/data/COVID_2022.csv"))
+here::i_am(
+  "project_md.Rmd"
+)
+
+dat <- read.csv(
+  file = here::here("data/COVID_2022.csv")
+)
+
 dat %>%
    rmarkdown::paged_table()
 
