@@ -1,0 +1,77 @@
+---
+title: "Brief Summary in Number of COVID-19 Cases US in 2022"
+author: "Mengke Du"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+```
+
+
+
+```{r package, include=FALSE,warning=FALSE}
+if(!("pacman" %in% installed.packages()[,"Package"])) {
+    install.packages("pacman", dependencies = TRUE)
+}
+
+library(pacman)
+
+pacman::p_load(
+    knitr,
+    kableExtra,
+    dplyr,
+    lubridate,
+    ggplot2,
+    hrbrthemes
+)
+```
+
+$~$
+$~$
+$~$
+
+### Introduction
+* CDC reports aggregate counts of COVID-19 cases and death numbers daily online. As of September, 2022, CDC case counts and death counts include both confirmed and probable cases and deaths. This dataset has 12 columns recording the number of confirmed cases, new cases, deaths, and other information by states over time. There are 57720 observations in total including missing values. 
+* Based on this dataset, I report the summary table of total COVID-19 cases in 2022 stratified by several regions per month. And including a plot showing the trend of new cases over time.
+
+$~$
+$~$
+
+### Loading data
+```{r data, include=T ,warning=FALSE}
+dat <- read.csv(paste0(getwd(),"/data/COVID_2022.csv"))
+dat %>%
+   rmarkdown::paged_table()
+
+table <- readRDS(
+  here::here("output/table.rds"))
+
+figure <- readRDS(
+  here::here("output/figure.rds"))
+```
+
+$~$
+$~$
+
+### Summary table
+```{r trend table, echo=FALSE, warning = FALSE, message = FALSE}
+table
+```
+* This table summarize the number of toal cases and new cases for each month among the US and three states.The number of new cases per month and the total number of cases vary from state to state. 
+
+$~$
+$~$
+
+
+### Trend figure
+```{r trend figure, echo=FALSE, warning = FALSE, message = FALSE, fig.width = 12, fig.height = 8, fig.align = "center", warning=FALSE}
+coeff <- 1
+temperatureColor <- "#69b3a2"
+priceColor <- rgb(0.2, 0.6, 0.9, 1)
+figure
+```
+* This chart shows how total cases per 100,000 people have changed through month in the US in 2022. The trend of new cases from 01/2022 to 09/2022 is shown. In general, the number of new cases per 1000 people for each month decreases over time.
