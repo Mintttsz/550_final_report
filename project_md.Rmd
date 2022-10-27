@@ -8,7 +8,11 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+knitr::opts_chunk$set(echo = F, warning=FALSE)
+here::i_am(
+  "project_md.Rmd"
+)
+
 ```
 
 
@@ -43,9 +47,6 @@ $~$
 
 ### Loading data
 ```{r data, include=T ,warning=FALSE}
-here::i_am(
-  "project_md.Rmd"
-)
 
 dat <- read.csv(
   file = here::here("data/COVID_2022.csv")
