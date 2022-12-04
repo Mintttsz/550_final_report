@@ -43,3 +43,5 @@
 `Makefile`
   - Updates with `make install` rule, which use `renv::restore()` to synchronize the project library
   - Builds the final report by executing `make` in the terminal under project directory
+  
+
