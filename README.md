@@ -18,7 +18,7 @@ Instruction to build the final report locally
   - forks and clones
   - navigates to project directory
   - runs `make project_image` to build the docker image, it would take some time.
-  - runs `report/project_md.html` to run the docker container. Once finish, the final report would be in the `report` folder.
+  - runs `make report/project_md.html` to run the docker container. Once finish, the final report would be in the `report` folder.
 
 Instruction to build the final report by pulling image from Docker Hub
 
